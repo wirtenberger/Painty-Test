@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PaintyTest.Contracts.Requests.User;
-using PaintyTest.Data.Entities;
-using PaintyTest.Mapper;
-using PaintyTest.Services;
+using PaintyTest.API.Contracts.Requests.User;
+using PaintyTest.API.Mapper;
+using PaintyTest.API.Services;
 
-namespace PaintyTest.Controllers;
+namespace PaintyTest.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

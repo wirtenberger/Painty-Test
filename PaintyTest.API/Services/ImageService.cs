@@ -1,9 +1,9 @@
 ﻿using System.Linq.Expressions;
-using PaintyTest.Contracts.Exceptions;
-using PaintyTest.Contracts.Repositories;
+using PaintyTest.API.Contracts.Exceptions;
+using PaintyTest.API.Contracts.Repositories;
 using PaintyTest.Data.Entities;
 
-namespace PaintyTest.Services;
+namespace PaintyTest.API.Services;
 
 public class ImageService
 {

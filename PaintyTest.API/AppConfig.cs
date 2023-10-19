@@ -1,8 +1,8 @@
-﻿namespace PaintyTest;
+﻿namespace PaintyTest.API;
 
 public static class AppConfig
 {
-    private static string _imageStorageDirectoryPath;
+    private static string _imageStorageDirectoryPath = string.Empty;
 
     public static string ImageStorageDirectoryPath
     {

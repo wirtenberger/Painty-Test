@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PaintyTest.Contracts.Requests.User;
+namespace PaintyTest.API.Contracts.Requests.User;
 
 public class UpdateUserRequest
 {

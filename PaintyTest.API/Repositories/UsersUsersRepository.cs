@@ -1,10 +1,10 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using PaintyTest.Contracts.Repositories;
+using PaintyTest.API.Contracts.Repositories;
 using PaintyTest.Data;
 using PaintyTest.Data.Entities;
 
-namespace PaintyTest.Repositories;
+namespace PaintyTest.API.Repositories;
 
 public class UsersUsersRepository : IUsersUsersRepository
 {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PaintyTest.Contracts.Exceptions;
+namespace PaintyTest.API.Contracts.Exceptions;
 
 public class ExceptionResponse
 {

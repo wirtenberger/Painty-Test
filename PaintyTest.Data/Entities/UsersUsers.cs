@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace PaintyTest.Data.Entities;
+﻿namespace PaintyTest.Data.Entities;
 
 public class UsersUsers
 {

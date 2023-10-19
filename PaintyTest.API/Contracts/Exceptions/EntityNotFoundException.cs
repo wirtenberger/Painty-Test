@@ -1,4 +1,4 @@
-﻿namespace PaintyTest.Contracts.Exceptions;
+﻿namespace PaintyTest.API.Contracts.Exceptions;
 
 public class EntityNotFoundException : BaseApiException
 {

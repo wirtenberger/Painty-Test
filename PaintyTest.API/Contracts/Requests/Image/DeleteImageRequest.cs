@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PaintyTest.Contracts.Requests.Image;
+namespace PaintyTest.API.Contracts.Requests.Image;
 
 public class DeleteImageRequest
 {

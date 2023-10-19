@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using PaintyTest.Data.Entities;
 
-namespace PaintyTest.Contracts.Repositories;
+namespace PaintyTest.API.Contracts.Repositories;
 
 public interface IUserRepository
 {

@@ -4,9 +4,9 @@ using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
-using PaintyTest.Services;
+using PaintyTest.API.Services;
 
-namespace PaintyTest.Authentication;
+namespace PaintyTest.API.Authentication;
 
 public static class BasicAuthentication
 {
