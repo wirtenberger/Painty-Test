@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using PaintyTest;
-using PaintyTest.Authentication;
-using PaintyTest.Contracts.Repositories;
+using PaintyTest.API;
+using PaintyTest.API.Authentication;
+using PaintyTest.API.Contracts.Repositories;
+using PaintyTest.API.Middlewares;
+using PaintyTest.API.Repositories;
+using PaintyTest.API.Services;
 using PaintyTest.Data;
-using PaintyTest.Middlewares;
-using PaintyTest.Repositories;
-using PaintyTest.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,7 +60,14 @@ builder.Services.AddScoped<FriendshipService>();
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandlerMiddleware>();
+if (app.Environment.IsEnvironment("Test"))
+{
+    app.UseMiddleware<TestsExceptionHandlerMiddleware>();
+}
+else
+{
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
+}
 
 if (app.Environment.IsDevelopment())
 {
@@ -73,11 +80,27 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using var scope = app.Services.CreateScope();
-var applicationDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-if (applicationDbContext.Database.GetPendingMigrations().Any())
+using (var scope = app.Services.CreateScope())
 {
-    applicationDbContext.Database.Migrate();
+    try
+    {
+        var applicationDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        if (applicationDbContext.Database.GetPendingMigrations().Any())
+        {
+            await applicationDbContext.Database.MigrateAsync();
+        }
+    }
+    catch
+    {
+        scope.ServiceProvider.GetRequiredService<ILogger<PaintyTest.API.Program>>().LogError("Apply migrations manually");
+    }
 }
 
 app.Run();
+
+namespace PaintyTest.API
+{
+    public class Program
+    {
+    }
+}

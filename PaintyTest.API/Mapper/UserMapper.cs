@@ -1,8 +1,8 @@
-﻿using PaintyTest.Contracts.Requests.User;
+﻿using PaintyTest.API.Contracts.Requests.User;
 using PaintyTest.Data.Dto;
 using PaintyTest.Data.Entities;
 
-namespace PaintyTest.Mapper;
+namespace PaintyTest.API.Mapper;
 
 public static class UserMapper
 {

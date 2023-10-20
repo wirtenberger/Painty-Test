@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace PaintyTest.Data.Entities;
+﻿namespace PaintyTest.Data.Entities;
 
 public class Image
 {
@@ -9,7 +7,7 @@ public class Image
     public string FileName { get; set; } = default!;
 
     /// <summary>
-    /// Путь относительно директории хранилища
+    ///     Путь относительно директории хранилища
     /// </summary>
     public string RelativePath { get; set; } = default!;
 

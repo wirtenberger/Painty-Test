@@ -3,28 +3,24 @@ using PaintyTest.Data;
 
 namespace PaintyTest.API.Middlewares;
 
-public class ExceptionHandlerMiddleware
+public class TestsExceptionHandlerMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public ExceptionHandlerMiddleware(RequestDelegate next)
+    public TestsExceptionHandlerMiddleware(RequestDelegate next)
     {
         _next = next;
     }
 
-    public async Task InvokeAsync(HttpContext context, AppDbContext dbContext, ILogger<ExceptionHandlerMiddleware> logger)
+    public async Task InvokeAsync(HttpContext context, AppDbContext dbContext)
     {
-        var transaction = await dbContext.Database.BeginTransactionAsync();
         try
         {
             await _next(context);
             await dbContext.SaveChangesAsync();
-            await transaction.CommitAsync();
         }
         catch (Exception ex)
         {
-            logger.LogError(ex.Message);
-            await transaction.RollbackAsync();
             if (ex is BaseApiException be)
             {
                 context.Response.StatusCode = be.StatusCode;

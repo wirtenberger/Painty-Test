@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace PaintyTest.Contracts.Exceptions;
+namespace PaintyTest.API.Contracts.Exceptions;
 
 public class EntityValidationException : BaseApiException
 {
