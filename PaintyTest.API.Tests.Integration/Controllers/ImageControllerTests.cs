@@ -36,7 +36,7 @@ public class ImageControllerTests
         var images = new MultipartFormDataContent();
         for (var i = 1; i <= 3; i++)
         {
-            var file = File.OpenRead($".\\TestImages\\{i}.jpg");
+            var file = File.OpenRead($"./TestImages/{i}.jpg");
             var stream = new StreamContent(file);
             stream.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
             images.Add(stream, "images", $"{i}.jpg");
