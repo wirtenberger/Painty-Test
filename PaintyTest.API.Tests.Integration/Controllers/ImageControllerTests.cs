@@ -71,7 +71,7 @@ public class ImageControllerTests
         client.Auth(user.Username, user.Password);
 
         var images = new MultipartFormDataContent();
-        var file = File.OpenRead(".\\TestImages\\1.jpg");
+        var file = File.OpenRead(@"./TestImages/1.jpg");
         var stream = new StreamContent(file);
         stream.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
         images.Add(stream, "images", "1.jpg");
@@ -132,7 +132,7 @@ public class ImageControllerTests
         });
 
         var images = new MultipartFormDataContent();
-        var file = File.OpenRead(".\\TestImages\\1.jpg");
+        var file = File.OpenRead(@"./TestImages/1.jpg");
         var stream = new StreamContent(file);
         stream.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
         images.Add(stream, "images", "1.jpg");
@@ -148,7 +148,7 @@ public class ImageControllerTests
     }
 
     [Fact]
-    public async Task GetImageInfo_ReturnsForbidden_WhenUserNotFriendOfImageOwner()
+    public async Task GetImageInfo_ReturnsForbidden_WhenUserNotFriendOfImageOwner() 
     {
         var user = Fakers.UserFaker.Generate();
         var otherUser = Fakers.UserFaker.Generate();
@@ -170,7 +170,7 @@ public class ImageControllerTests
         client.Auth(otherUser.Username, otherUser.Password);
 
         var images = new MultipartFormDataContent();
-        var file = File.OpenRead(".\\TestImages\\1.jpg");
+        var file = File.OpenRead(@"./TestImages/1.jpg");
         var stream = new StreamContent(file);
         stream.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
         images.Add(stream, "images", "1.jpg");
@@ -199,7 +199,7 @@ public class ImageControllerTests
         client.Auth(user.Username, user.Password);
 
         var images = new MultipartFormDataContent();
-        var file = File.OpenRead(".\\TestImages\\1.jpg");
+        var file = File.OpenRead(@"./TestImages/1.jpg");
         var stream = new StreamContent(file);
         stream.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
         images.Add(stream, "images", "1.jpg");
@@ -210,7 +210,7 @@ public class ImageControllerTests
         var response = await client.GetAsync($"api/Image/download?id={imageDto.Id}");
         var imageBytes = await response.Content.ReadAsByteArrayAsync();
 
-        var expectedBytes = await File.ReadAllBytesAsync(".\\TestImages\\1.jpg");
+        var expectedBytes = await File.ReadAllBytesAsync(@"./TestImages/1.jpg");
 
         Assert.Equivalent(HttpStatusCode.OK, response.StatusCode);
         Assert.Equal(expectedBytes, imageBytes);
@@ -262,7 +262,7 @@ public class ImageControllerTests
         });
 
         var images = new MultipartFormDataContent();
-        var file = File.OpenRead(".\\TestImages\\1.jpg");
+        var file = File.OpenRead(@"./TestImages/1.jpg");
         var stream = new StreamContent(file);
         stream.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
         images.Add(stream, "images", "1.jpg");
@@ -274,7 +274,7 @@ public class ImageControllerTests
         var response = await client.GetAsync($"api/Image/download?id={imageDto.Id}");
         var imageBytes = await response.Content.ReadAsByteArrayAsync();
 
-        var expectedBytes = await File.ReadAllBytesAsync(".\\TestImages\\1.jpg");
+        var expectedBytes = await File.ReadAllBytesAsync(@"./TestImages/1.jpg");
 
         Assert.Equivalent(HttpStatusCode.OK, response.StatusCode);
         Assert.Equal(expectedBytes, imageBytes);
@@ -303,7 +303,7 @@ public class ImageControllerTests
         client.Auth(otherUser.Username, otherUser.Password);
 
         var images = new MultipartFormDataContent();
-        var file = File.OpenRead(".\\TestImages\\1.jpg");
+        var file = File.OpenRead(@"./TestImages/1.jpg");
         var stream = new StreamContent(file);
         stream.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
         images.Add(stream, "images", "1.jpg");
