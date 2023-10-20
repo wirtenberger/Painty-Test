@@ -100,7 +100,7 @@ app.Run();
 
 namespace PaintyTest.API
 {
-    public partial class Program
+    public class Program
     {
     }
 }
