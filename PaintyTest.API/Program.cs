@@ -38,6 +38,19 @@ builder.Services.AddSwaggerGen(opts =>
     });
 });
 
+builder.Services.AddCors(opts =>
+{
+    opts.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyHeader().WithMethods(
+            HttpMethod.Get.ToString(),
+            HttpMethod.Delete.ToString(),
+            HttpMethod.Post.ToString(),
+            HttpMethod.Put.ToString()
+        );
+    });
+});
+
 builder.Services.AddDbContext<AppDbContext>(opts =>
 {
     opts.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
@@ -75,6 +88,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 
