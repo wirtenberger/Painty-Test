@@ -4,7 +4,7 @@ namespace PaintyTest.Data.Entities;
 
 public class User
 {
-    private List<Image> _images = new();
+    private readonly List<Image> _images = new();
 
     public Guid Id { get; set; } = default!;
 

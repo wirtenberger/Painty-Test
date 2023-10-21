@@ -1,4 +1,4 @@
-﻿namespace PaintyTest.Services;
+﻿namespace PaintyTest.API.Services;
 
 public static class ImageStorage
 {
