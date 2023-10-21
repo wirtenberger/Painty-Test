@@ -221,8 +221,6 @@ curl --location --request PUT 'http://localhost:5065/api/User/unfriend' \
 - Тело запроса
   - id - Id пользователя
   - username - Username пользователя
-- Ответ 400BadRequest
-  - Пользователь не найден или оба параметра id и username не указаны
 - Ответ 403Forbidden
   - Пользователь, не имеющий роли администратора, пытается получить информацию не о себе
 - Тело ответа 200OK
@@ -230,7 +228,7 @@ curl --location --request PUT 'http://localhost:5065/api/User/unfriend' \
 
 Пример запроса:
 ```
-curl --location 'http://localhost:5065/api/User/getusersfriends?username=user' \
+curl --location 'http://localhost:5065/api/User/getusersfriends' \
 --header 'Authorization: Basic dXNlcjpwYXNz'
 ```
 
@@ -252,8 +250,6 @@ curl --location 'http://localhost:5065/api/User/getusersfriends?username=user' \
 - Тело запроса
   - id - Id пользователя
   - username - Username пользователя
-- Ответ 400BadRequest
-  - Пользователь не найден или оба параметра id и username не указаны
 - Ответ 403Forbidden
   - Пользователь, не имеющий роли администратора, пытается получить информацию не о себе
 - Тело ответа 200OK
@@ -261,7 +257,7 @@ curl --location 'http://localhost:5065/api/User/getusersfriends?username=user' \
 
 Пример запроса:
 ```
-curl --location 'http://localhost:5065/api/User/getusersfriendof?username=user3' \
+curl --location 'http://localhost:5065/api/User/getusersfriendof' \
 --header 'Authorization: Basic dXNlcjM6cGFzcw=='
 ```
 
@@ -283,8 +279,6 @@ curl --location 'http://localhost:5065/api/User/getusersfriendof?username=user3'
 - Тело запроса
   - id - Id пользователя
   - username - Username пользователя
-- Ответ 400BadRequest
-  - Пользователь не найден или оба параметра id и username не указаны
 - Ответ 403Forbidden
   - Пользователь, не имеющий роли администратора, пытается получить информацию не о себе
 - Тело ответа 200OK

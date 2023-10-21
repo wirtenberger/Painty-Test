@@ -99,7 +99,7 @@ public class UserControllerTests
             }
         );
 
-        var response2 = await client.GetAsync($"api/User/getusersfriends?id={users[0].Id}");
+        var response2 = await client.GetAsync($"api/User/getusersfriends");
         var userDtos = await response2.Content.ReadFromJsonAsync<List<UserDto>>();
 
         Assert.Equivalent(HttpStatusCode.OK, response2.StatusCode);
@@ -143,7 +143,7 @@ public class UserControllerTests
         );
 
         client.Auth(users[0].Username, users[0].Password);
-        var response2 = await client.GetAsync($"api/User/getusersfriendof?id={users[0].Id}");
+        var response2 = await client.GetAsync($"api/User/getusersfriendof");
         var userDtos = await response2.Content.ReadFromJsonAsync<List<UserDto>>();
 
         Assert.Equivalent(HttpStatusCode.OK, response2.StatusCode);
