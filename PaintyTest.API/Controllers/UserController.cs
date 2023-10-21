@@ -56,7 +56,11 @@ public class UserController : ControllerBase
             return Ok(users.Select(u => u.ToDto()));
         }
 
-        return BadRequest();
+        {
+            var user = await _userService.GetByUsername(Username);
+            var users = await _userService.GetUsersFriends(user.Id);
+            return Ok(users.Select(u => u.ToDto()));
+        }
     }
 
     [Authorize]
@@ -86,7 +90,11 @@ public class UserController : ControllerBase
             return Ok(users.Select(u => u.ToDto()));
         }
 
-        return BadRequest();
+        {
+            var user = await _userService.GetByUsername(Username);
+            var users = await _userService.GetUsersFriendOf(user.Id);
+            return Ok(users.Select(u => u.ToDto()));
+        }
     }
 
     [Authorize(Roles = "Admin")]
@@ -134,7 +142,10 @@ public class UserController : ControllerBase
             return Ok(user.Images.Select(u => u.ToDto()));
         }
 
-        return BadRequest();
+        {
+            var user = await _userService.GetByUsername(Username);
+            return Ok(user.Images.Select(u => u.ToDto()));
+        }
     }
 
     [HttpPost("createuser")]
